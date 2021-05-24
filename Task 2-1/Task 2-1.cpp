@@ -1,45 +1,63 @@
-﻿#include <iostream>
-Int: a, b
+2-1
+#include <iostream>
 
+using namespace std;
 
-cout << "Выберите алгорит замены переменных";
-cout << "1 - Замена через 3 переменную";
-cout << "2 - Замена через 2 переменные";
-cin >> z;
-if z == 1;
-    F1;
-if z == 2 :
-    F2;
-else :
-    cout » Введите 1 или 2
+/
+* \brief перемена местами переменных с использованием 3ей переменной
+* \param c - переменная-буфер
+*/
+void zamena(int a, int b);
 
-void F1 (a,b) /*Замена 2 переменных через 3 переменную*/
-{
-    std::cout << "Enter two values: ";
+/*
+* \brief пермена местами переменных без использования 3ей переменной
+* 
+*/
+void swap(int a, int b);
 
-    if (std::cin >> a >> b)
-    {
-        std::cout << "The original values: a = " << a << ", b = " << b << std::endl;
-        int tmp = a;
-        a = b;
-        b = tmp;
-        std::cout << "After swapping: a = " << a << ", b = " << b << std::endl;
-    }
-    else
-    {
-        std::cout << "Unexpected error occured" << std::endl;
-    }
-}
-void F2 (a,b) /*Замена 2 переменных между собой*/
+/*
+* \brief Точка входа в программу.
+* \param a - переменная 1
+* \param b - переменная 2
+* \param f - переменная для выбора алгоритма
+* \return Код ошибки (0 - успех).
+*/
+int main()
 {
     setlocale(LC_ALL, "Russian");
-    int a, b;
+
+    int a, b, f;
     cout << "Введите а - ";
     cin >> a;
     cout << "Введите b - ";
     cin >> b;
-    swap(a, b);
-    cout << "Чему равно а - " << a << '\n';
-    cout << "Чему равно b - " << b << '\n';
-    return(0);
+    cout << "Выберите алгоритм ((1) - с 3 переменными; (2) - без) - ";
+    cin >> f;
+    if (f == 1) 
+    {
+        zamena(a, b);
+    }
+    else 
+    {
+        swap(a, b);
+    }
+}
+
+void zamena( int a, int b)
+{
+    int c;
+    c = a;
+    a = b;
+    b = c;
+    cout << "Значение а после перестановки - " << a << '\n';
+    cout << "Значение b после перестановки - " << b << '\n';
+}
+
+void swap(int a, int b)
+{
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    cout << "Значение а после перестановки - " << a << '\n';
+    cout << "Значение b после перестановки - " << b << '\n';
 }
