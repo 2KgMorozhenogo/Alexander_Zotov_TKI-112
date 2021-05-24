@@ -24,60 +24,6 @@ void replacement(int* arr, int n);
 */
 void proizvedenie(int* arr, int n);
 
- void GetSum(int *arr, int n)
-{
-     int sum;
-     sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] < 0 and arr[i] % 10 == 0)
-        {
-            sum = sum + arr[i];
-        }
-    }
-    cout << endl << "Сумма отрицательных элементов массива кратных 10: " << sum << endl;
-
-    
-
-   
-}
-
-void replacement(int *arr, int n)
-{
-    int k, j;
-    cout << "Введите количество первых элементов, которое заменятся на те же переменные, но в обратном порядке - ";
-    cin >> k;
-    k -= 1;
-    for (int i = 0; i < k; i++) //переворот k элементов массива
-    {
-        j = arr[i];
-        arr[i] = arr[k - i];
-        arr[k - i] = j;
-
-    }
-
-    cout << "Перевернутый массив: "; //вывод перевернутого массива
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-}
-
-void proizvedenie(int* arr, int n)
-{
-    int b;
-    cout << endl << "Введите число, которое будет значением произведения пар - ";
-    cin >> b;
-
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (arr[i] * arr[i + 1] == b)
-        {
-            cout << "Пара элементов, произведение которых равно " << b << " - " << arr[i] << " " << arr[i + 1];
-        }
-    }
-
-}
 /**
 * \brief Точка входа в программу
 * \return Код ошибки(0 - успех)
@@ -121,3 +67,55 @@ int main()
     proizvedenie(arr, n);
 
 }   
+
+ void GetSum(int *arr, int n)
+{
+     int sum;
+     sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] < 0 and arr[i] % 10 == 0)
+        {
+            sum = sum + arr[i];
+        }
+    }
+    cout << endl << "Сумма отрицательных элементов массива кратных 10: " << sum << endl;
+}
+
+void replacement(int *arr, int n)
+{
+    int k, j;
+    cout << "Введите количество первых элементов, которое заменятся на те же переменные, но в обратном порядке - ";
+    cin >> k;
+    k -= 1;
+    for (int i = 0; i < k; i++) //переворот k элементов массива
+    {
+        j = arr[i];
+        arr[i] = arr[k - i];
+        arr[k - i] = j;
+
+    }
+
+    cout << "Перевернутый массив: "; //вывод перевернутого массива
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+void proizvedenie(int* arr, int n)
+{
+    int b;
+    cout << endl << "Введите число, которое будет значением произведения пар - ";
+    cin >> b;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (arr[i] * arr[i + 1] == b)
+        {
+            cout << "Пара элементов, произведение которых равно " << b << " - " << arr[i] << " " << arr[i + 1];
+        }
+    }
+
+}
+
