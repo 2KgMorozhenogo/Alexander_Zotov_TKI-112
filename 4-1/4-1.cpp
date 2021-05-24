@@ -9,7 +9,7 @@ using namespace std;
 * \brief Найти сумму отрицательных элементов, значение которых равно 10.
 * \param sum - Переменная для суммы отрицательных элементов массива кратных 10
 */ 
-void summa(int* arr, int n);
+void GetSum(int* arr, int n);
 
 /**
 * \brief Заменить первые k элементов массива на те же элементы в обратном порядке
@@ -24,7 +24,7 @@ void replacement(int* arr, int n);
 */
 void proizvedenie(int* arr, int n);
 
- void summa(int *arr, int n)
+ void GetSum(int *arr, int n)
 {
      int sum;
      sum = 0;
