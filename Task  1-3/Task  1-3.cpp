@@ -6,7 +6,7 @@ using namespace std;
 /**
 * \brief Расчет давления pressure 
 * \param g - Ускорение свободного падения
-* \param massa - Масса
+* \param mass - Масса
 * \param square - Площадь поверхности опоры
 * \return Pressure - Давление
 */
