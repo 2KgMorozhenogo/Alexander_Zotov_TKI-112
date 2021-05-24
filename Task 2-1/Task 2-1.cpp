@@ -7,7 +7,7 @@ using namespace std;
 * \brief перемена местами переменных с использованием 3ей переменной
 * \param c - переменная-буфер
 */
-void zamena(int a, int b);
+void replacement(int a, int b);
 
 /*
 * \brief пермена местами переменных без использования 3ей переменной
@@ -43,7 +43,7 @@ int main()
     }
 }
 
-void zamena( int a, int b)
+void replacement( int a, int b)
 {
     int c;
     c = a;
@@ -53,7 +53,7 @@ void zamena( int a, int b)
     cout << "Значение b после перестановки - " << b << '\n';
 }
 
-void swap(int a, int b)
+void swap(int *a, int *b)
 {
     a = a + b;
     b = a - b;
