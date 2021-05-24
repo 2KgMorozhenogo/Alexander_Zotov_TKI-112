@@ -24,6 +24,16 @@ void input(double xa, double xb, double xc, double ya, double yb, double yc);
 */
 void check(double xa, double xb, double xc, double ya, double yb, double yc);
 
+int main(void)
+{
+    double xa, xb, xc, ya, yb, yc;
+
+    input(xa, xb, xc, ya, yb, yc);
+
+    check(xa, xb, xc, ya, yb, yc);
+
+    return 0;
+}
 
 void input(double xa, double xb, double xc, double ya, double yb, double yc) // вводим функцию на ввод переменных
 {
@@ -75,13 +85,3 @@ void check(double xa, double xb, double xc, double ya, double yb, double yc) //�
     }
 }
 
-int main(void)
-{
-    double xa, xb, xc, ya, yb, yc;
-
-    input(xa, xb, xc, ya, yb, yc);
-
-    check(xa, xb, xc, ya, yb, yc);
-
-    return 0;
-}
