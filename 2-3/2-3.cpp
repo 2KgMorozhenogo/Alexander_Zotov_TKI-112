@@ -31,22 +31,22 @@ void input(double xa, double xb, double xc, double ya, double yb, double yc) // 
 
 
 
-    std::cout << "Введите координаты точек A, B, C" << endl;
+    cout << "Введите координаты точек A, B, C" << endl;
 
-    std::cout << "xa = ";
+    cout << "xa = ";
     cin >> xa;
-    std::cout << "ya = ";
+    cout << "ya = ";
     cin >> ya;
 
 
-    std::cout << "xb = ";
+    cout << "xb = ";
     cin >> xb;
-    std::cout << "yb = ";
+    cout << "yb = ";
     cin >> yb;
 
-    std::cout << "xc = ";
+    cout << "xc = ";
     cin >> xc;
-    std::cout << "yc = ";
+    cout << "yc = ";
     cin >> yc;
 }
 
@@ -58,7 +58,7 @@ void check(double xa, double xb, double xc, double ya, double yb, double yc) //�
     {
         if ((xb / xc) == (yb / yc))
         {
-            std::cout << "Точки A, B, C лежат на одной прямой" << endl;
+            cout << "Точки A, B, C лежат на одной прямой" << endl;
         }
     }
     else
@@ -71,7 +71,7 @@ void check(double xa, double xb, double xc, double ya, double yb, double yc) //�
         module_ab = (pow(vector_ab_x, 2) + (pow(vector_ab_y, 2)));
         module_bc = (pow(vector_bc_x, 2) + (pow(vector_bc_y, 2)));
 
-        std::cout << "Точки A, B, C не лежат на одной прямой. Угол B равен - " << acos(scalar / (module_bc * module_ab)) << endl;
+        cout << "Точки A, B, C не лежат на одной прямой. Угол B равен - " << acos(scalar / (module_bc * module_ab)) << endl;
     }
 }
 
