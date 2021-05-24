@@ -17,8 +17,11 @@ void formula();
 */
 void summa();
 
-int sum, k, b, i, n, a;
-
+int main() {
+    int sum, k, b, i, n, a;
+    summa();
+    formula();
+}
 
 void summa()
 {
@@ -63,9 +66,4 @@ void formula()
         chus = 1;
     }
     cout << sum;
-}
-
-int main() {
-    summa();
-    formula();
 }
