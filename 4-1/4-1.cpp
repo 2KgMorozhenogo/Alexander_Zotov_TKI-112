@@ -1,6 +1,6 @@
-﻿
+
 #include <iostream>
-#include <cstdlib>
+#include <string>
 #include <ctime>
 using namespace std;
 
@@ -9,20 +9,38 @@ using namespace std;
 * \brief Найти сумму отрицательных элементов, значение которых равно 10.
 * \param sum - Переменная для суммы отрицательных элементов массива кратных 10
 */ 
-void GetSum(int* arr, int n);
+int sum(int* arr, int number);
 
 /**
 * \brief Заменить первые k элементов массива на те же элементы в обратном порядке
 * \param k - Переменная для выбора кол-ва элементов для переворота массива
 * \param j - Переменная для перемены мест элементов в массиве
 */
-void replacement(int* arr, int n);
+int swap(int* arr, int number);
 
 /**
 * \brief Определить, есть ли пара соседних элементов с произведением, равным заданному числу.
 * \param b - Переменная для поиска пар с произведением
 */
-void proizvedenie(int* arr, int n);
+int product(int* arr, int number);
+
+/**
+* \brief вывод массива
+* \return массив
+*/
+int conclusion(int* arr, int counter);
+
+/**
+* \brief вывод перевернутого массива
+* \return перевернутый массив
+*/
+int swap_output(int* arr, int counter, int number);
+
+//enum class Choice
+//{
+//    Random = 1,
+//    Manually = 2
+//};
 
 /**
 * \brief Точка входа в программу
@@ -30,92 +48,124 @@ void proizvedenie(int* arr, int n);
 */
 int main()
 {
-    int n, a, i;
+    int number, choice, counter;
     setlocale(LC_ALL, "Russian");
     cout << "Введите количество элементов массива - ";
-    cin >> n;
-    cout << "Как хотите заполнить массив? Введите 1 для ручного заполнения, 2 для автоматического заполнения. Способ - ";
-    cin >> a;
+    cin >> number;    
+    int* arr = new int[number];
+    //const auto message = "Как хотите заполнить массив? \n "
+     //   + to_string(static_cast<int>(Choice::Random)) + " - Заполнение случайными числами \n"
+     //   + to_string(static_cast<int>(Choice::Manually)) + " - Заполнение массива с клавиатуры \n";
 
-    int *arr = new int[n];
+    cout << " 1 для рандома 2 для ручного - ";
+    cin >> choice;
     srand(time(0));
-    if (a == 1)
+    if (choice == 1)
     {
-        for (int i = 0; i < n; i++) //заполнение массива с клавиатуры
+        for (int counter = 0; counter < number; counter++) //заполнение массива с клавиатуры
         {
-            cin >> arr[i];
+            cin >> arr[counter];
         }
     }
-    else if (a == 2)
+    else if (choice == 2)
     {
-        for (int i = 0; i < n; i++) //заполнение массива случайными числами
+        for (int counter = 0; counter < number; counter++) //заполнение массива случайными числами
         {
-            arr[i] = rand() % 2000 - 1000; // Диапазон заполнения чисел
+            arr[counter] = rand() % 2000 - 1000;
         }
     }
     cout << "Ваш массив:"; //вывод массива на экран
 
-    for (int i = 0; i < n; i++)
+    for (int counter = 0; counter < number; counter++)
     {
-        cout << arr[i] << " ";
+        cout << arr[counter] << " ";
     }
 
-    summa(arr, n);
 
-    replacement(arr, n);
+    //switch (number)
+    //{
+    //case Choice::Random:
+    //{
+    //}
+    //}
 
-    proizvedenie(arr, n);
 
+    conclusion(arr, counter);
+
+    sum(arr, number);
+
+    swap(arr, number);
+
+    product(arr, number);
+
+    cout << "Пара элементов, произведение которых равно " << " - " << arr[counter] << " " << arr[counter + 1];
 }   
 
- void GetSum(int *arr, int n)
+int sum(int* arr, int number)
 {
-     int sum;
-     sum = 0;
-    for (int i = 0; i < n; i++)
+    int sum;
+    sum = 0;
+    for (int counter = 0; counter < number; counter++)
     {
-        if (arr[i] < 0 and arr[i] % 10 == 0)
+        if (arr[counter] < 0 and arr[counter] % 10 == 0)
         {
-            sum = sum + arr[i];
+            sum = sum + arr[counter];
         }
     }
-    cout << endl << "Сумма отрицательных элементов массива кратных 10: " << sum << endl;
+    cout << '\n' << "Сумма отрицательных элементов массива кратных 10: " << sum << '\n';
 }
 
-void replacement(int *arr, int n)
+int swap(int* arr, int number, int counter)
 {
-    int k, j;
+    int quantity, buffer;
     cout << "Введите количество первых элементов, которое заменятся на те же переменные, но в обратном порядке - ";
-    cin >> k;
-    k -= 1;
-    for (int i = 0; i < k; i++) //переворот k элементов массива
+    cin >> quantity;
+    quantity -= 1;
+    for (int counter = 0; counter < quantity; counter++) //переворот k элементов массива
     {
-        j = arr[i];
-        arr[i] = arr[k - i];
-        arr[k - i] = j;
+        buffer = arr[counter];
+        arr[counter] = arr[quantity - counter];
+        arr[quantity - counter] = buffer;
 
     }
 
-    cout << "Перевернутый массив: "; //вывод перевернутого массива
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    swap_output(arr, quantity, number);
 }
 
-void proizvedenie(int* arr, int n)
+int product(int* arr, int number)
 {
-    int b;
-    cout << endl << "Введите число, которое будет значением произведения пар - ";
-    cin >> b;
+    int couple;
+    cout << '/n' << "Введите число, которое будет значением произведения пар - ";
+    cin >> couple;
 
-    for (int i = 0; i < n - 1; i++)
+    for (int counter = 0; counter < number - 1; counter++)
     {
-        if (arr[i] * arr[i + 1] == b)
+        if (arr[counter] * arr[counter + 1] == couple)
         {
-            cout << "Пара элементов, произведение которых равно " << b << " - " << arr[i] << " " << arr[i + 1];
+            return couple, arr[counter], arr[counter + 1];
+        }
+        else
+        {
+            return 0;
         }
     }
 
 }
 
+int conclusion(int* arr, int counter, int number)
+{
+    cout << "Ваш массив: ";
+    for (counter = 0; counter < number; counter++)
+    {
+        cout << arr[counter];
+    }
+}
+
+int swap_output(int* arr, int counter, int number)
+{
+    cout << "Первернутый массив: ";
+    for (counter = 0; counter < number; counter++)
+    {
+        cout << arr[counter];
+    }
+}
