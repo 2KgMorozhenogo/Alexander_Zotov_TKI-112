@@ -36,11 +36,21 @@ int conclusion(int* arr, int counter);
 */
 int swap_output(int* arr, int counter, int number);
 
-//enum class Choice
-//{
-//    Random = 1,
-//    Manually = 2
-//};
+/**
+*  \brief заполнение массива случайными числами
+*/
+void randomDigits(int* arr, int counter, int number, int UP_BOUND, int LOW_BOUND);
+
+/**
+*  \brief заполнение массива с клавиатуры
+*/
+void UserInput(int* arr, int counter, int number, int UP_BOUND, int LOW_BOUND);
+
+enum path
+{
+    Manuall = 1,
+    Random = 2
+};
 
 /**
 * \brief Точка входа в программу
@@ -53,26 +63,22 @@ int main()
     cout << "Введите количество элементов массива - ";
     cin >> number;    
     int* arr = new int[number];
-    //const auto message = "Как хотите заполнить массив? \n "
-     //   + to_string(static_cast<int>(Choice::Random)) + " - Заполнение случайными числами \n"
-     //   + to_string(static_cast<int>(Choice::Manually)) + " - Заполнение массива с клавиатуры \n";
-
-    cout << " 1 для рандома 2 для ручного - ";
+    const int UP_BOUND = 1000;
+    const int LOW_BOUND = -1000; 
+    cout << "Как хотите заполнить массив?" << '\n' << "Введите 1 для заполнения массива с клавиатуры или 2 для заполнения массива случайными числами - ";
     cin >> choice;
-    srand(time(0));
-    if (choice == 1)
+    const auto filling = static_cast<path>(choice);
+    switch (filling) {
+    case path::Random:
     {
-        for (int counter = 0; counter < number; counter++) //заполнение массива с клавиатуры
-        {
-            cin >> arr[counter];
-        }
+        randomDigits(arr, counter, number, UP_BOUND, LOW_BOUND);
     }
-    else if (choice == 2)
+    case path::Manuall:
     {
-        for (int counter = 0; counter < number; counter++) //заполнение массива случайными числами
-        {
-            arr[counter] = rand() % 2000 - 1000;
-        }
+        UserInput(arr, counter, number, UP_BOUND, LOW_BOUND);
+    }
+    default:
+        cout << "Некоректный ввод.";
     }
     cout << "Ваш массив:"; //вывод массива на экран
 
@@ -80,15 +86,6 @@ int main()
     {
         cout << arr[counter] << " ";
     }
-
-
-    //switch (number)
-    //{
-    //case Choice::Random:
-    //{
-    //}
-    //}
-
 
     conclusion(arr, counter);
 
@@ -98,7 +95,6 @@ int main()
 
     product(arr, number);
 
-    cout << "Пара элементов, произведение которых равно " << " - " << arr[counter] << " " << arr[counter + 1];
 }   
 
 int sum(int* arr, int number)
@@ -167,5 +163,21 @@ int swap_output(int* arr, int counter, int number)
     for (counter = 0; counter < number; counter++)
     {
         cout << arr[counter];
+    }
+}
+
+void randomDigits(int* arr, int counter, int number, int UP_BOUND, int LOW_BOUND)
+{
+    for (counter  = 0; counter < number; counter++) 
+    {
+        arr[counter] = rand() % (2 * UP_BOUND + 1) + LOW_BOUND;
+    }
+}
+
+void UserInput(int* arr, int counter, int number, int UP_BOUND, int LOW_BOUND)
+{
+    for (counter = 0; counter < number; counter++)
+    {
+        cin >> arr[counter];
     }
 }
