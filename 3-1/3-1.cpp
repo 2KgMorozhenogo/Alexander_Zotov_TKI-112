@@ -1,50 +1,32 @@
 #include <iostream>
-#include <math.h>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
-/
-*\brief Функция для расчета y
-*\param x Параметр x
-*\return Параметр y
-*/
-double GetY(double x);
+/**
+* \brief Расчёт функции
+* \param x Аргумент функции
+* \return Значение функции
+**/
+double calcFunction(const double x);
 
-/
-*\brief Ввод значения х в программу
-*\return Конечное значение
-*/
 int main()
 {
-    setlocale(LC_ALL, "Russian");
+	const double LOWER_BOUND = 2.0, UPPER_BOUND = 4.0, STEP = 0.2;
+	const size_t WIDTH = 5;
 
-    double x;
-    cout << "Введите значение x = ";
-    cin >> x;
-    int LOW_BOUND = 0;
-    int UP_BOUND = 1;
-    double step = 0.1;
+	cout << setw(WIDTH) << "X" << " | " << setw(2 * WIDTH) << "Y\n";
 
+	for (double x = LOWER_BOUND; x < UPPER_BOUND + STEP; x += STEP)
+	{
+		cout << setw(WIDTH) << x << " | " << setw(2 * WIDTH) << calcFunction(x) << "\n";
+	}
 
-        for (x; x >= LOW_BOUND && x <= UP_BOUND; x += step)
-
-        {
-            if (x >= LOW_BOUND && x <= UP_BOUND)
-            {
-                auto y = GetY(x);
-
-                cout << " y = " << y << "\n";
-            }
-            else
-            {
-                auto y = GetY(x);
-                cout << " y = " << y << "\n" << "Нет решения, так как х не входит в область определения " << endl;
-            }
-        }
-    return 0;
+	return 0;
 }
 
-double GetY(double x)
+double calcFunction(const double x)
 {
-    return 3 * x - 4 * log(x) - 5;
+	return 3 * x - 4 * log(x) - 5;
 }
