@@ -30,4 +30,3 @@ double calcFunction(const double x)
 {
 	return 3 * x - 4 * log(x) - 5;
 }
-
