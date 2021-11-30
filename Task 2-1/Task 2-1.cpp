@@ -24,7 +24,7 @@ void swap(int a, int b);
 /**
 * \brief выбор заполнения массива
 */
-enum path
+class enum path
 {
 	Manuall = 1,
 	Random = 2
