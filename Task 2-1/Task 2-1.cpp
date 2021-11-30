@@ -3,57 +3,64 @@ using namespace std;
 
 /**
 * \brief перемена местами переменных с использованием 3ей переменной
-* \param c - переменная-буфер
+* \param a переменная a
+* \param b переменная b
 */
 void swap1(int a, int b);
 
 /**
 * \brief пермена местами переменных без использования 3ей переменной
-*
+* \param a переменная a
+* \param b переменная b
 */
 void swap(int a, int b);
 
-/**
-* \brief Точка входа в программу.
-* \param a - переменная 1
-* \param b - переменная 2
-* \param f - переменная для выбора алгоритма
-* \return Код ошибки (0 - успех).
-*/
 
 /**
 * \brief выбор заполнения массива
 */
-class enum path
+enum class path
 {
-	Manuall = 1,
-	Random = 2
+	SwapWithoutThirdVariable = 1,
+	SwapWithThirdVariable = 2
 };
 
+/**
+* \brief Точка входа в программу.
+* \return Код ошибки (0 - успех).
+*/
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int a, b, choice;
+	int a, b;
 	cout << "Введите а - ";
 	cin >> a;
 	cout << "Введите b - ";
 	cin >> b;
-	cout << "Выберите как хотите заполнить массив:\n1 - ввод с клавиатуры\n2 - заполнение массива случайными числами\nВыбор: ";
+	cout << "Какой алгоритм хотите использовать? Введите \n"
+		<< static_cast<int>(path::SwapWithoutThirdVariable) << " - для перемены местами переменных без использования третьей переменной,\n"
+		<< static_cast<int>(path::SwapWithThirdVariable) << " - для перемены местами переменных с использованием третьей переменной.\n"
+		<< "Ваш выбор: ";
 	int choice;
 	cin >> choice;
 	const auto filling = static_cast<path>(choice);
 	switch (filling) {
-	case path::Random:
+	case path::SwapWithoutThirdVariable:
 	{
 		swap(a, b);
+		break;
 	}
-	case path::Manuall:
+	case path::SwapWithThirdVariable:
 	{
 		swap1(a, b);
+		break;
 	}
 	default:
+	{
 		cout << "Некоректный ввод.";
+		break;
+	}
 	}
 }
 
