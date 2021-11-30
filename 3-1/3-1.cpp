@@ -21,7 +21,7 @@ int main()
 {	
 	setlocale(LC_ALL, "Russian");
 	cout << fixed;
-	const double LOWER_BOUND = -1.0, UPPER_BOUND = 4.0, STEP = 0.2;
+	const double LOWER_BOUND = 2.0, UPPER_BOUND = 4.0, STEP = 0.2;
 	const size_t WIDTH = 5;
 
 	cout << setw(WIDTH) << "X" << " | " << setw(2 * WIDTH) << "Y\n";
