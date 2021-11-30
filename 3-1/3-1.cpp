@@ -15,7 +15,7 @@ double calcFunction(const double x);
 * \param x Аргумент функции
 * \return Проверка значения
 **/
-bool isCalculated(const double x);
+bool NotCalculated(const double x);
 
 int main()
 {	
@@ -28,7 +28,7 @@ int main()
 
 	for (double x = LOWER_BOUND; x < UPPER_BOUND + STEP; x += STEP)
 	{
-		if (isCalculated(x))
+		if (NotCalculated(x))
 			cout << setw(WIDTH) << x << " | " << setw(2 * WIDTH) << "Невозможно вычислить значение в данной точке\n";
 		else
 			cout << setw(WIDTH) << x << " | " << setw(2 * WIDTH) << calcFunction(x) << "\n";
@@ -41,7 +41,7 @@ double calcFunction(const double x)
 	return 3 * x - 4 * log(x) - 5;
 }
 
-bool isCalculated(const double x)
+bool NotCalculated(const double x)
 {
 	return (x <= 0);
 }
