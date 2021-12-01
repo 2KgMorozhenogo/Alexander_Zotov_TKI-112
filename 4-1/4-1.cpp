@@ -81,6 +81,7 @@ enum class FillType
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     const int MIN = -1000, MAX = 1000;
 
     cout << "Please input array length: ";
@@ -89,7 +90,9 @@ int main()
 
     int* arr = new int[size];
 
-    cout << "Choose an option:\n" << "1) Generate array\n" << "2) Manual input\n" << "1 or 2: ";
+    cout << "Choose an option:\n" << static_cast<int>(FillType::randomize)<< ") Generate array\n" 
+        << static_cast<int>(FillType::manual) << ") Manual input\n" 
+        << static_cast<int>(FillType::randomize) <<" or " << static_cast<int>(FillType::manual) << ": ";
     int choice;
     cin >> choice;
 
@@ -128,8 +131,12 @@ int main()
     replaceElements(arr, size, --k);
     cout << "Замена первых " << k << " элементов массива на те же элементы в обратном порядке: " << arrayToString(arr, size) << "\n";
 
-    delete[] arr;
-    
+    if (arr != nullptr)
+    { 
+        delete[] arr;
+        arr = nullptr;
+    }
+
 }
 
 void randomizeArray(int* array, const size_t size, const int min, const int max)
@@ -197,7 +204,7 @@ void replaceElements(int* arr, const size_t size, const size_t index)
 
     for (size_t i = 0; i <= index / 2; i++)
         swap(arr[i], arr[index - i]);
-        
+
 }
 
 bool pairExist(int* arr, const size_t size, const int number)
